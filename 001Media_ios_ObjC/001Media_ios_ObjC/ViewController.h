@@ -8,8 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+#import <MobileCoreServices/MobileCoreServices.h>
 
+@interface ViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate>
+
+//Both UIImagePickerControllerDelegate and UINavigationControllerDelegate declarations
+//are necessary for the class to interact with the UIImagePickerController.
+
+
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIButton *pickButton;
+@property (nonatomic, strong) UIImagePickerController *pickerController;
+
+- (IBAction)pickImage:(id)sender;
 
 @end
 

@@ -14,6 +14,7 @@
 		1E5B405D1B93FA4F00551F39 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E5B405C1B93FA4F00551F39 /* Images.xcassets */; };
 		1E5B40601B93FA4F00551F39 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E5B405E1B93FA4F00551F39 /* LaunchScreen.xib */; };
 		1E5B406C1B93FA4F00551F39 /* _01Media_ios_ObjCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E5B406B1B93FA4F00551F39 /* _01Media_ios_ObjCTests.m */; };
+		1E5B40761B9403A700551F39 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E5B40751B9403A700551F39 /* MobileCoreServices.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		1E5B40651B93FA4F00551F39 /* 001Media_ios_ObjCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = 001Media_ios_ObjCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E5B406A1B93FA4F00551F39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1E5B406B1B93FA4F00551F39 /* _01Media_ios_ObjCTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _01Media_ios_ObjCTests.m; sourceTree = "<group>"; };
+		1E5B40751B9403A700551F39 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E5B40761B9403A700551F39 /* MobileCoreServices.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +66,7 @@
 		1E5B40431B93FA4F00551F39 = {
 			isa = PBXGroup;
 			children = (
+				1E5B40751B9403A700551F39 /* MobileCoreServices.framework */,
 				1E5B404E1B93FA4F00551F39 /* 001Media_ios_ObjC */,
 				1E5B40681B93FA4F00551F39 /* 001Media_ios_ObjCTests */,
 				1E5B404D1B93FA4F00551F39 /* Products */,
