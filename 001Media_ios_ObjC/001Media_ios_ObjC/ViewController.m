@@ -107,60 +107,83 @@
   
   if( [info objectForKey:@"UIImagePickerControllerMediaType"] == (NSString *) kUTTypeMovie ) {
     
+  // 1
+    //    CGSize pickerSize = CGSizeMake(picker.view.bounds.size.width,
+//                                   picker.view.bounds.size.height-100);
+//    UIGraphicsBeginImageContext(pickerSize);
+//    [picker.view.layer renderInContext:UIGraphicsGetCurrentContext()];
+//    UIImage *thumbnail = UIGraphicsGetImageFromCurrentImageContext();
+//    UIGraphicsEndImageContext();
+//    self.imageView.image = thumbnail;
+
+  // 2
+    AVURLAsset *asset=[[AVURLAsset alloc]
+                       initWithURL:[info objectForKey:UIImagePickerControllerMediaURL]
+                       options:nil];
+    AVAssetImageGenerator *generator =
+    [[AVAssetImageGenerator alloc] initWithAsset:asset];
+    generator.appliesPreferredTrackTransform=TRUE;
+
+    CMTime thumbTime = CMTimeMakeWithSeconds(0,30);
     
-//    NSString *tempFilePath =
-//    [[info objectForKey:UIImagePickerControllerMediaURL] path];
-//    if ( UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(tempFilePath) ){
-//      UISaveVideoAtPathToSavedPhotosAlbum( tempFilePath, self,
-//                                          @selector(video:didFinishSavingWithError:contextInfo:), tempFilePath);
-//    }
-//    
-//    /*
-//     CGSize pickerSize = CGSizeMake(picker.view.bounds.size.width, picker.view.bounds.size.height-100);
-//     UIGraphicsBeginImageContext(pickerSize);
-//     [picker.view.layer renderInContext:UIGraphicsGetCurrentContext()];
-//     UIImage *thumbnail = UIGraphicsGetImageFromCurrentImageContext();
-//     UIGraphicsEndImageContext();
-//     imageView.image = thumbnail;
-//     */
-//    
-//    AVURLAsset *asset=[[AVURLAsset alloc] initWithURL:[info objectForKey:UIImagePickerControllerMediaURL] options:nil];
-//    AVAssetImageGenerator *generator = [[AVAssetImageGenerator alloc] initWithAsset:asset];
-//    generator.appliesPreferredTrackTransform=TRUE;
-//    [asset release];
-//    CMTime thumbTime = CMTimeMakeWithSeconds(0,30);
-//    
-//    AVAssetImageGeneratorCompletionHandler handler = ^(CMTime requestedTime, CGImageRef im, CMTime actualTime, AVAssetImageGeneratorResult result, NSError *error){
-//      if (result != AVAssetImageGeneratorSucceeded) {
-//        NSLog(@"couldn't generate thumbnail, error:%@", error);
-//      }
-//      imageView.image = [[UIImage imageWithCGImage:im] retain];
-//      [generator release];
-//    };
-//    
-//    CGSize maxSize = CGSizeMake(320, 180);
-//    generator.maximumSize = maxSize;
-//    [generator generateCGImagesAsynchronouslyForTimes:[NSArray arrayWithObject:[NSValue valueWithCMTime:thumbTime]] completionHandler:handler];
-//    
+    AVAssetImageGeneratorCompletionHandler handler =
+    ^(CMTime requestedTime, CGImageRef im, CMTime actualTime,
+      AVAssetImageGeneratorResult result, NSError *error) {
+      if (result != AVAssetImageGeneratorSucceeded) {
+        NSLog(@"Error:%@", error);
+      }
+      
+      self.imageView.image = [UIImage imageWithCGImage:im];
+    };
+    
+    CGSize maxSize = CGSizeMake(320, 180);
+    generator.maximumSize = maxSize;
+    [generator generateCGImagesAsynchronouslyForTimes:
+     [NSArray arrayWithObject:[NSValue valueWithCMTime:thumbTime]]
+                                    completionHandler:handler];
+    
+
     
     
   } else {
 
-    self.imageView.image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
-//    UIImage *image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+// 1
+//    self.imageView.image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
     
-//    UIImageWriteToSavedPhotosAlbum(
-//                                   image,
-//                                   self,
-//                                   @selector(imageSavedToPhotosAlbum:didFinishSavingWithError:contextInfo:),
-//                                   nil);
-//    
-//    imageView.image = image;
+// 2  // This is for save photo in the album of device
+    UIImage *image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
     
+    UIImageWriteToSavedPhotosAlbum(
+                                   image,
+                                   self,
+                                   @selector(imageSavedToPhotosAlbum:didFinishSavingWithError:contextInfo:),
+                                   nil);
+    self.imageView.image = image;
   }
   [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+
+- (void)imageSavedToPhotosAlbum:(UIImage *)image
+       didFinishSavingWithError:(NSError *)error
+                    contextInfo:(void *)contextInfo {
+  NSString *title;
+  NSString *message;
+  if (!error) {
+    title = @"Photo Saved";
+    message = @"The photo has been saved to your Photo Album";
+  } else {
+    title = NSLocalizedString(@"Error Saving Photo", @"");
+    message = [error description];
+  }
+  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
+                                                  message:message
+                                                 delegate:nil
+                                        cancelButtonTitle:@"OK"
+                                        otherButtonTitles:nil];
+  [alert show];
+
+}
 
 
 
