@@ -51,7 +51,7 @@
 //  popupQuery.actionSheetStyle = UIActionSheetStyleBlackOpaque;
 //  [popupQuery showInView:self.view];
   
-// Second way: Here show actionsheetstyle for choise type in another way (Horizontal)  
+// Second way: Here show actionsheetstyle for choise type in another way (Horizontal)
   if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
     pickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
     NSArray* mediaTypes =
@@ -98,6 +98,70 @@
   
   
 }
+
+
+// = = =  =
+
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+  
+  if( [info objectForKey:@"UIImagePickerControllerMediaType"] == (NSString *) kUTTypeMovie ) {
+    
+    
+//    NSString *tempFilePath =
+//    [[info objectForKey:UIImagePickerControllerMediaURL] path];
+//    if ( UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(tempFilePath) ){
+//      UISaveVideoAtPathToSavedPhotosAlbum( tempFilePath, self,
+//                                          @selector(video:didFinishSavingWithError:contextInfo:), tempFilePath);
+//    }
+//    
+//    /*
+//     CGSize pickerSize = CGSizeMake(picker.view.bounds.size.width, picker.view.bounds.size.height-100);
+//     UIGraphicsBeginImageContext(pickerSize);
+//     [picker.view.layer renderInContext:UIGraphicsGetCurrentContext()];
+//     UIImage *thumbnail = UIGraphicsGetImageFromCurrentImageContext();
+//     UIGraphicsEndImageContext();
+//     imageView.image = thumbnail;
+//     */
+//    
+//    AVURLAsset *asset=[[AVURLAsset alloc] initWithURL:[info objectForKey:UIImagePickerControllerMediaURL] options:nil];
+//    AVAssetImageGenerator *generator = [[AVAssetImageGenerator alloc] initWithAsset:asset];
+//    generator.appliesPreferredTrackTransform=TRUE;
+//    [asset release];
+//    CMTime thumbTime = CMTimeMakeWithSeconds(0,30);
+//    
+//    AVAssetImageGeneratorCompletionHandler handler = ^(CMTime requestedTime, CGImageRef im, CMTime actualTime, AVAssetImageGeneratorResult result, NSError *error){
+//      if (result != AVAssetImageGeneratorSucceeded) {
+//        NSLog(@"couldn't generate thumbnail, error:%@", error);
+//      }
+//      imageView.image = [[UIImage imageWithCGImage:im] retain];
+//      [generator release];
+//    };
+//    
+//    CGSize maxSize = CGSizeMake(320, 180);
+//    generator.maximumSize = maxSize;
+//    [generator generateCGImagesAsynchronouslyForTimes:[NSArray arrayWithObject:[NSValue valueWithCMTime:thumbTime]] completionHandler:handler];
+//    
+    
+    
+  } else {
+
+    self.imageView.image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+//    UIImage *image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+    
+//    UIImageWriteToSavedPhotosAlbum(
+//                                   image,
+//                                   self,
+//                                   @selector(imageSavedToPhotosAlbum:didFinishSavingWithError:contextInfo:),
+//                                   nil);
+//    
+//    imageView.image = image;
+    
+  }
+  [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
 
 
 
