@@ -39,17 +39,32 @@
 - (IBAction)pickImage:(id)sender {
   
   
-  // First type: Here show actionsheetstyle for choise type
-  UIActionSheet * popupQuery = [[UIActionSheet alloc]
-                                initWithTitle:nil
-                                delegate:self
-                                cancelButtonTitle:@"Cancel"
-                                destructiveButtonTitle:nil
-                                otherButtonTitles:@"Foto",@"Video", nil];
+//  // First type: Here show actionsheetstyle for choise type
+//  UIActionSheet * popupQuery = [[UIActionSheet alloc]
+//                                initWithTitle:nil
+//                                delegate:self
+//                                cancelButtonTitle:@"Cancel"
+//                                destructiveButtonTitle:nil
+//                                otherButtonTitles:@"Foto",@"Video", nil];
+//  
+//  
+//  popupQuery.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+//  [popupQuery showInView:self.view];
   
+// Second way: Here show actionsheetstyle for choise type in another way (Horizontal)  
+  if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+    pickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+    NSArray* mediaTypes =
+    [UIImagePickerController availableMediaTypesForSourceType:
+     UIImagePickerControllerSourceTypeCamera];
+    pickerController.mediaTypes = mediaTypes;
+  } else {
+    pickerController.sourceType =
+    UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+  }
   
-  popupQuery.actionSheetStyle = UIActionSheetStyleBlackOpaque;
-  [popupQuery showInView:self.view];
+  [self presentViewController:pickerController animated:YES completion:nil];
+  
   
   
   
