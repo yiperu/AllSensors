@@ -117,30 +117,57 @@
 //    self.imageView.image = thumbnail;
 
   // 2
-    AVURLAsset *asset=[[AVURLAsset alloc]
-                       initWithURL:[info objectForKey:UIImagePickerControllerMediaURL]
-                       options:nil];
-    AVAssetImageGenerator *generator =
-    [[AVAssetImageGenerator alloc] initWithAsset:asset];
+//    AVURLAsset *asset=[[AVURLAsset alloc]
+//                       initWithURL:[info objectForKey:UIImagePickerControllerMediaURL]
+//                       options:nil];
+//    AVAssetImageGenerator *generator =
+//    [[AVAssetImageGenerator alloc] initWithAsset:asset];
+//    generator.appliesPreferredTrackTransform=TRUE;
+//
+//    CMTime thumbTime = CMTimeMakeWithSeconds(0,30);
+//    
+//    AVAssetImageGeneratorCompletionHandler handler =
+//    ^(CMTime requestedTime, CGImageRef im, CMTime actualTime,
+//      AVAssetImageGeneratorResult result, NSError *error) {
+//      if (result != AVAssetImageGeneratorSucceeded) {
+//        NSLog(@"Error:%@", error);
+//      }
+//      
+//      self.imageView.image = [UIImage imageWithCGImage:im];
+//    };
+//    
+//    CGSize maxSize = CGSizeMake(320, 180);
+//    generator.maximumSize = maxSize;
+//    [generator generateCGImagesAsynchronouslyForTimes:
+//     [NSArray arrayWithObject:[NSValue valueWithCMTime:thumbTime]]
+//                                    completionHandler:handler];
+    
+    // 3
+
+    
+    NSString *tempFilePath = (NSString *)[[info objectForKey:UIImagePickerControllerMediaURL] path];
+    
+    if ( UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(tempFilePath) ){
+      UISaveVideoAtPathToSavedPhotosAlbum( tempFilePath, self, @selector(video:didFinishSavingWithError:contextInfo:), (__bridge void *)(tempFilePath));
+    }
+    
+    AVURLAsset *asset=[[AVURLAsset alloc] initWithURL:[info objectForKey:UIImagePickerControllerMediaURL] options:nil];
+    AVAssetImageGenerator *generator = [[AVAssetImageGenerator alloc] initWithAsset:asset];
     generator.appliesPreferredTrackTransform=TRUE;
 
     CMTime thumbTime = CMTimeMakeWithSeconds(0,30);
     
-    AVAssetImageGeneratorCompletionHandler handler =
-    ^(CMTime requestedTime, CGImageRef im, CMTime actualTime,
-      AVAssetImageGeneratorResult result, NSError *error) {
+    AVAssetImageGeneratorCompletionHandler handler = ^(CMTime requestedTime, CGImageRef im, CMTime actualTime, AVAssetImageGeneratorResult result, NSError *error){
       if (result != AVAssetImageGeneratorSucceeded) {
-        NSLog(@"Error:%@", error);
+        NSLog(@"couldn't generate thumbnail, error:%@", error);
       }
-      
       self.imageView.image = [UIImage imageWithCGImage:im];
+
     };
     
     CGSize maxSize = CGSizeMake(320, 180);
     generator.maximumSize = maxSize;
-    [generator generateCGImagesAsynchronouslyForTimes:
-     [NSArray arrayWithObject:[NSValue valueWithCMTime:thumbTime]]
-                                    completionHandler:handler];
+    [generator generateCGImagesAsynchronouslyForTimes:[NSArray arrayWithObject:[NSValue valueWithCMTime:thumbTime]] completionHandler:handler];
     
 
     
@@ -186,6 +213,22 @@
 }
 
 
+
+- (void)video:(NSString *)videoPath didFinishSavingWithError:(NSError *)error contextInfo:(NSString *)contextInfo{
+  
+  NSString *title;
+  NSString *message;
+  if (!error) {
+    title = @"Video Saved";
+    message = @"The video has been saved to your Photo Album";
+    
+  } else {
+    title = NSLocalizedString(@"Error Saving Video", @"");
+    message = [error description];
+  }
+  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+  [alert show];
+}
 
 
 
