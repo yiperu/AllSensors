@@ -14,6 +14,8 @@
 		1E2D39401B9569E2001589F1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E2D393F1B9569E2001589F1 /* Images.xcassets */; };
 		1E2D39431B9569E2001589F1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E2D39411B9569E2001589F1 /* LaunchScreen.xib */; };
 		1E2D394F1B9569E2001589F1 /* _03Recorder_ios_ObjCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E2D394E1B9569E2001589F1 /* _03Recorder_ios_ObjCTests.m */; };
+		1E2D39591B956C88001589F1 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E2D39581B956C88001589F1 /* CoreAudio.framework */; };
+		1E2D395B1B956C8F001589F1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E2D395A1B956C8F001589F1 /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,8 @@
 		1E2D39481B9569E2001589F1 /* 003Recorder_ios_ObjCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = 003Recorder_ios_ObjCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E2D394D1B9569E2001589F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1E2D394E1B9569E2001589F1 /* _03Recorder_ios_ObjCTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _03Recorder_ios_ObjCTests.m; sourceTree = "<group>"; };
+		1E2D39581B956C88001589F1 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		1E2D395A1B956C8F001589F1 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +51,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E2D395B1B956C8F001589F1 /* AVFoundation.framework in Frameworks */,
+				1E2D39591B956C88001589F1 /* CoreAudio.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +69,8 @@
 		1E2D39261B9569E2001589F1 = {
 			isa = PBXGroup;
 			children = (
+				1E2D395A1B956C8F001589F1 /* AVFoundation.framework */,
+				1E2D39581B956C88001589F1 /* CoreAudio.framework */,
 				1E2D39311B9569E2001589F1 /* 003Recorder_ios_ObjC */,
 				1E2D394B1B9569E2001589F1 /* 003Recorder_ios_ObjCTests */,
 				1E2D39301B9569E2001589F1 /* Products */,

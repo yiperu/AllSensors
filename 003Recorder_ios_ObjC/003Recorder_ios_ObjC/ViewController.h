@@ -11,7 +11,7 @@
 #import <AVFoundation/AVFoundation.h>
 
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <AVAudioRecorderDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *startStopButton;
 @property (weak, nonatomic) IBOutlet UIButton *playButton;
