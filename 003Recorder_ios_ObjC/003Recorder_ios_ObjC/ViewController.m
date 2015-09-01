@@ -76,7 +76,15 @@
 
 
 - (IBAction)playButtonPressed:(id)sender {
+  AVAudioSession * audioSession = [AVAudioSession sharedInstance];
+  [audioSession setCategory:AVAudioSessionCategoryPlayback error:nil];
+  [audioSession setActive:YES error:nil];
   
+  AVAudioPlayer * player = [[AVAudioPlayer alloc] initWithContentsOfURL:tmpFile error:nil];
+  [player prepareToPlay];
+  [player play];
   
 }
+
+
 @end
