@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -15,8 +16,86 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dgi-g0-bO7">
+                                <rect key="frame" x="36" y="54" width="544" height="40"/>
+                                <color key="backgroundColor" red="1" green="0.96392039852644784" blue="0.10903839973758944" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="39" id="DUo-zS-DCo"/>
+                                    <constraint firstAttribute="height" constant="40" id="Qzo-aB-wOw"/>
+                                    <constraint firstAttribute="height" constant="39" id="fiR-Ol-TTG"/>
+                                </constraints>
+                                <state key="normal" title="Start Recording">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="DUo-zS-DCo"/>
+                                        <exclude reference="fiR-Ol-TTG"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="startStopButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="N7X-E6-pcB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cpq-Xu-gpI">
+                                <rect key="frame" x="36" y="118" width="528" height="40"/>
+                                <color key="backgroundColor" red="1" green="0.96236551865696018" blue="0.097054684920111933" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Oi3-6J-nMI"/>
+                                </constraints>
+                                <state key="normal" title="Play Recording">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="playButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="mKN-9i-X9U"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Cpq-Xu-gpI" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="20" id="6vK-MX-WgH"/>
+                            <constraint firstItem="Cpq-Xu-gpI" firstAttribute="top" secondItem="dgi-g0-bO7" secondAttribute="bottom" constant="25" id="C8P-NK-NnW"/>
+                            <constraint firstItem="dgi-g0-bO7" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="28" id="CLG-gZ-RYo"/>
+                            <constraint firstItem="dgi-g0-bO7" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="FT7-Qo-zVL"/>
+                            <constraint firstAttribute="trailing" secondItem="dgi-g0-bO7" secondAttribute="trailing" constant="20" id="GdL-kq-urF"/>
+                            <constraint firstItem="dgi-g0-bO7" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="54" id="HNu-uv-vpl"/>
+                            <constraint firstItem="dgi-g0-bO7" firstAttribute="leading" secondItem="Cpq-Xu-gpI" secondAttribute="leading" id="KG2-8P-2Zi"/>
+                            <constraint firstItem="Cpq-Xu-gpI" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="KM8-qn-LRD"/>
+                            <constraint firstItem="dgi-g0-bO7" firstAttribute="leading" secondItem="Cpq-Xu-gpI" secondAttribute="leading" id="Kxg-vC-TZP"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Cpq-Xu-gpI" secondAttribute="bottom" constant="443" id="Nox-mx-wiA"/>
+                            <constraint firstItem="dgi-g0-bO7" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="20" id="OZX-ai-oeh"/>
+                            <constraint firstItem="dgi-g0-bO7" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="34" id="OqH-1K-xBs"/>
+                            <constraint firstItem="Cpq-Xu-gpI" firstAttribute="top" secondItem="dgi-g0-bO7" secondAttribute="bottom" constant="24" id="SVj-8q-LFB"/>
+                            <constraint firstItem="dgi-g0-bO7" firstAttribute="trailing" secondItem="Cpq-Xu-gpI" secondAttribute="trailing" id="Y3z-8E-vb6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Cpq-Xu-gpI" secondAttribute="trailing" constant="20" id="YAd-Oe-m2g"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Cpq-Xu-gpI" secondAttribute="bottom" constant="443" id="kXu-JF-FXc"/>
+                            <constraint firstItem="dgi-g0-bO7" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="34" id="qJ3-KQ-SmI"/>
+                            <constraint firstItem="Cpq-Xu-gpI" firstAttribute="top" secondItem="dgi-g0-bO7" secondAttribute="bottom" constant="25" id="wpy-Gg-OSp"/>
+                            <constraint firstItem="dgi-g0-bO7" firstAttribute="trailing" secondItem="Cpq-Xu-gpI" secondAttribute="trailing" id="zJx-2F-QiZ"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="CLG-gZ-RYo"/>
+                                <exclude reference="FT7-Qo-zVL"/>
+                                <exclude reference="KG2-8P-2Zi"/>
+                                <exclude reference="Kxg-vC-TZP"/>
+                                <exclude reference="OqH-1K-xBs"/>
+                                <exclude reference="Y3z-8E-vb6"/>
+                                <exclude reference="qJ3-KQ-SmI"/>
+                                <exclude reference="zJx-2F-QiZ"/>
+                                <exclude reference="C8P-NK-NnW"/>
+                                <exclude reference="KM8-qn-LRD"/>
+                                <exclude reference="wpy-Gg-OSp"/>
+                                <exclude reference="Nox-mx-wiA"/>
+                                <exclude reference="kXu-JF-FXc"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="playButton" destination="Cpq-Xu-gpI" id="3Qb-R8-eVA"/>
+                        <outlet property="startStopButton" destination="dgi-g0-bO7" id="9vB-Zg-LZL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>

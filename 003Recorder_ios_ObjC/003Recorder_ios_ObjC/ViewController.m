@@ -24,4 +24,9 @@
   // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)startStopButtonPressed:(id)sender {
+}
+
+- (IBAction)playButtonPressed:(id)sender {
+}
 @end

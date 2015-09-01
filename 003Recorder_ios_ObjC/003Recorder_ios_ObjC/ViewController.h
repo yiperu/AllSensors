@@ -8,7 +8,26 @@
 
 #import <UIKit/UIKit.h>
 
+#import <AVFoundation/AVFoundation.h>
+
+
 @interface ViewController : UIViewController
+
+@property (weak, nonatomic) IBOutlet UIButton *startStopButton;
+@property (weak, nonatomic) IBOutlet UIButton *playButton;
+
+
+- (IBAction)startStopButtonPressed:(id)sender;
+- (IBAction)playButtonPressed:(id)sender;
+
+@property (nonatomic, strong) NSURL *tmpFile;
+@property (nonatomic, strong) AVAudioRecorder *recorder;
+@property BOOL recording;
+
+
+
+
+
 
 
 @end
