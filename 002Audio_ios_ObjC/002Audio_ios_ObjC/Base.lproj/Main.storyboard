@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -15,8 +16,72 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LIx-T6-azV">
+                                <rect key="frame" x="48" y="70" width="98" height="30"/>
+                                <color key="backgroundColor" red="0.87644198518658467" green="1" blue="0.1959664732753319" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="98" id="ReF-Ye-4GX"/>
+                                </constraints>
+                                <state key="normal" title="Pick">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pushedPick:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="N9D-lN-hpc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aWD-e9-SYt">
+                                <rect key="frame" x="48" y="108" width="98" height="30"/>
+                                <color key="backgroundColor" red="0.87644198518658467" green="1" blue="0.1959664732753319" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Play">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pushedPlay:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="vlb-Kb-YAc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="itY-Pw-quG">
+                                <rect key="frame" x="48" y="146" width="98" height="30"/>
+                                <color key="backgroundColor" red="0.87644198518658467" green="1" blue="0.1959664732753319" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Pause">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pushedPause:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Nn8-FA-BHZ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kz8-OH-qSP">
+                                <rect key="frame" x="48" y="184" width="98" height="30"/>
+                                <color key="backgroundColor" red="0.87644198518658467" green="1" blue="0.1959664732753319" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Stop">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pushedStop:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="XS0-Xr-I2e"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="LIx-T6-azV" firstAttribute="trailing" secondItem="aWD-e9-SYt" secondAttribute="trailing" id="8Pb-rb-jF7"/>
+                            <constraint firstItem="itY-Pw-quG" firstAttribute="leading" secondItem="Kz8-OH-qSP" secondAttribute="leading" id="BL5-NU-QWn"/>
+                            <constraint firstItem="Kz8-OH-qSP" firstAttribute="trailing" secondItem="itY-Pw-quG" secondAttribute="trailing" id="E74-8V-A73"/>
+                            <constraint firstItem="aWD-e9-SYt" firstAttribute="leading" secondItem="itY-Pw-quG" secondAttribute="leading" id="S36-4L-JHo"/>
+                            <constraint firstItem="aWD-e9-SYt" firstAttribute="leading" secondItem="LIx-T6-azV" secondAttribute="leading" id="Sx8-Rv-3XR"/>
+                            <constraint firstItem="aWD-e9-SYt" firstAttribute="top" secondItem="LIx-T6-azV" secondAttribute="bottom" constant="8" symbolic="YES" id="fGc-k1-9Fc"/>
+                            <constraint firstItem="LIx-T6-azV" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="50" id="feD-Q0-yXh"/>
+                            <constraint firstItem="aWD-e9-SYt" firstAttribute="trailing" secondItem="itY-Pw-quG" secondAttribute="trailing" id="iGI-nj-xaz"/>
+                            <constraint firstItem="Kz8-OH-qSP" firstAttribute="top" secondItem="itY-Pw-quG" secondAttribute="bottom" constant="8" symbolic="YES" id="jEE-SU-qK7"/>
+                            <constraint firstItem="itY-Pw-quG" firstAttribute="top" secondItem="aWD-e9-SYt" secondAttribute="bottom" constant="8" symbolic="YES" id="muh-Jk-9uH"/>
+                            <constraint firstItem="LIx-T6-azV" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="32" id="owD-mp-YbV"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="pauseButton" destination="itY-Pw-quG" id="mwF-U6-RLG"/>
+                        <outlet property="pickButton" destination="LIx-T6-azV" id="EPi-bF-OkL"/>
+                        <outlet property="playButton" destination="aWD-e9-SYt" id="hMU-MJ-U8Y"/>
+                        <outlet property="stopButton" destination="Kz8-OH-qSP" id="cFT-sH-MJ3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>

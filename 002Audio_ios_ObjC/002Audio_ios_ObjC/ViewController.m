@@ -24,4 +24,15 @@
   // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)pushedPick:(id)sender {
+}
+
+- (IBAction)pushedPlay:(id)sender {
+}
+
+- (IBAction)pushedPause:(id)sender {
+}
+
+- (IBAction)pushedStop:(id)sender {
+}
 @end

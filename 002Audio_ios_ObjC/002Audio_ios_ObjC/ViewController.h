@@ -8,7 +8,27 @@
 
 #import <UIKit/UIKit.h>
 
+#import <MediaPlayer/MediaPlayer.h>
+
 @interface ViewController : UIViewController
+
+
+@property (weak, nonatomic) IBOutlet UIButton *pickButton;
+@property (weak, nonatomic) IBOutlet UIButton *playButton;
+@property (weak, nonatomic) IBOutlet UIButton *pauseButton;
+@property (weak, nonatomic) IBOutlet UIButton *stopButton;
+// IBAction:
+
+
+
+- (IBAction)pushedPick:(id)sender;
+- (IBAction)pushedPlay:(id)sender;
+- (IBAction)pushedPause:(id)sender;
+- (IBAction)pushedStop:(id)sender;
+
+@property (nonatomic, strong) MPMusicPlayerController *musicPlayer;
+
+
 
 
 @end
