@@ -14,6 +14,8 @@
 
 @implementation ViewController
 
+@synthesize musicPlayer;
+
 - (void)viewDidLoad {
   [super viewDidLoad];
   // Do any additional setup after loading the view, typically from a nib.
@@ -25,14 +27,43 @@
 }
 
 - (IBAction)pushedPick:(id)sender {
+  
+  MPMediaPickerController *mediaPicker = [[MPMediaPickerController alloc] initWithMediaTypes: MPMediaTypeAnyAudio];
+  mediaPicker.delegate = self;
+  mediaPicker.allowsPickingMultipleItems = YES;
+  [self presentViewController:mediaPicker animated:YES completion:nil];
+  
 }
 
 - (IBAction)pushedPlay:(id)sender {
+  [musicPlayer play];
 }
 
 - (IBAction)pushedPause:(id)sender {
+  [musicPlayer pause];
 }
 
 - (IBAction)pushedStop:(id)sender {
+  [musicPlayer stop];
 }
+
+
+#pragma mark -
+#pragma mark - Implementation method of Delegates
+
+-(void)mediaPicker:(MPMediaPickerController *)mediaPicker didPickMediaItems:(MPMediaItemCollection *)mediaItemCollection {
+
+  [self dismissViewControllerAnimated:YES completion:nil];
+  musicPlayer = [MPMusicPlayerController applicationMusicPlayer];
+  [musicPlayer setQueueWithItemCollection:mediaItemCollection];
+  
+}
+
+
+
+
+- (void) mediaPickerDidCancel: (MPMediaPickerController *) mediaPicker {
+  [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 @end

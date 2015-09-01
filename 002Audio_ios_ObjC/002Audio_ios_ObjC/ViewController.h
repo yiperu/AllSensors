@@ -10,7 +10,7 @@
 
 #import <MediaPlayer/MediaPlayer.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <MPMediaPickerControllerDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UIButton *pickButton;
